@@ -1,5 +1,6 @@
-import { useParams } from "react-router";
+import { useParams, Outlet } from "react-router";
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 
 const Detail = () => {
   const { id } = useParams();
@@ -9,7 +10,7 @@ const Detail = () => {
     fetch(`https://jsonplaceholder.typicode.com/users/${id}`)
       .then((res) => res.json())
       .then((data) => {
-        // console.log(data);
+        console.log(data);
         setUsers(data);
       })
       .catch((err) => console.log(err));
@@ -20,6 +21,11 @@ const Detail = () => {
       <h1>Detail page</h1>
       <h2>Params id: {id}</h2>
       <pre>{JSON.stringify(users, null, 2)}</pre>
+      <hr />
+      <nav>
+        <Link to="post">Post</Link> | <Link to="product">Product</Link>
+      </nav>
+      <Outlet />
     </div>
   );
 };
