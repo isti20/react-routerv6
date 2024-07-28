@@ -1,6 +1,5 @@
-import { useParams, Outlet } from "react-router";
+import { useParams } from "react-router";
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
 
 const Detail = () => {
   const { id } = useParams();
@@ -21,11 +20,6 @@ const Detail = () => {
       <h1>Detail page</h1>
       <h2>Params id: {id}</h2>
       <pre>{JSON.stringify(users, null, 2)}</pre>
-      <hr />
-      <nav>
-        <Link to="post">Post</Link> | <Link to="product">Product</Link>
-      </nav>
-      <Outlet />
     </div>
   );
 };
